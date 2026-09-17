@@ -3,6 +3,9 @@ import { Callout } from './Callout';
 import { CodeBlock } from './CodeBlock';
 import { InteractiveSim } from './InteractiveSim';
 import { PipelineVisualizer } from './PipelineVisualizer';
+import { FireWhatIfSim } from './FireWhatIfSim';
+import { LifePlanSim } from './LifePlanSim';
+import { FireTypesVisualizer } from './FireTypesVisualizer';
 import { ExternalLink, Terminal } from 'lucide-react';
 
 export const ArticleContent: React.FC = () => {
@@ -12,14 +15,14 @@ export const ArticleContent: React.FC = () => {
       <div className="not-prose mb-12 pb-8 border-b border-stone-200 dark:border-stone-800">
         <div className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-3 py-1 rounded-full border border-blue-200/80 dark:border-blue-900/40 mb-4">
           <Terminal className="w-3.5 h-3.5" />
-          <span>Engineering Systems Design &middot; Decumulation Phase</span>
+          <span>Engineering Systems Design &middot; Decumulation &amp; FIRE</span>
         </div>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-stone-900 dark:text-stone-100 tracking-tight leading-tight mb-4">
           ソフトウェアエンジニアのための<br className="hidden sm:inline" />
           資産取り崩しの基本
         </h1>
         <p className="text-lg sm:text-xl text-stone-600 dark:text-stone-400 leading-relaxed font-normal">
-          感情のバグを排除し、破綻確率を極小化しながら人生の効用を最大化するデキュムレーション・アーキテクチャ
+          FIREの工学的モデル、感情のバグの排除、そして破綻確率を極小化しながら人生の効用を最大化するデキュムレーション・アーキテクチャ
         </p>
 
         <div className="flex flex-wrap items-center gap-y-2 gap-x-6 mt-6 text-xs text-stone-500 dark:text-stone-400">
@@ -27,7 +30,7 @@ export const ArticleContent: React.FC = () => {
             公開: <span className="font-mono text-stone-700 dark:text-stone-300">2026年9月</span>
           </div>
           <div>
-            対象: <span className="text-stone-700 dark:text-stone-300">資産形成期を終えつつあるソフトウェアエンジニア</span>
+            対象: <span className="text-stone-700 dark:text-stone-300">資産形成期を終えつつある、あるいはFIREを目指すエンジニア</span>
           </div>
           <div>
             原案・着想: <a href="https://hayatoito.github.io/2020/investing/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline">Hayato Ito (2020)</a>
@@ -46,7 +49,7 @@ export const ArticleContent: React.FC = () => {
         >
           ソフトウェアエンジニアのための投資の基本 (2020)
         </a>
-        」の思想、トーン＆マナー、およびエンジニアリング的アプローチを継承し、資産形成（アキュムレーション）のその先にある「資産取り崩し（デキュムレーション期）」の工学的設計を論じるものです。
+        」の思想、トーン＆マナー、およびエンジニアリング的アプローチを継承し、資産形成（アキュムレーション）のその先にある「FIRE（経済的自立）」および「資産取り崩し（デキュムレーション期）」の工学的設計を論じるものです。
       </Callout>
 
       {/* 免責事項 & 対象読者 */}
@@ -56,7 +59,7 @@ export const ArticleContent: React.FC = () => {
           本稿は、投資助言や特定の金融商品・取引の勧誘を目的としたものではありません。筆者は金融の専門家ではなく、1人のソフトウェアエンジニアとして、金融工学や統計的知見、公開されている制度情報を自身のシステム思考に基づいて整理・記述しています。
         </p>
         <p>
-          投資および取り崩しの最終判断は、ご自身の責任において行ってください。
+          投資、FIREの決断、および取り崩しの最終判断は、ご自身の責任において行ってください。
         </p>
 
         <h2>対象読者</h2>
@@ -94,7 +97,7 @@ export const ArticleContent: React.FC = () => {
 
         <h3 id="intro-dynamic-problem">「取り崩し」という動的最適化問題の出現</h3>
         <p>
-          しかし、十分な資産を築き上げ、いざリタイアや労働の縮小（サイドFIRE / バリスタFIRE等を含む）を迎えようとするとき、私たちは突如としてまったく異なる性質の難問に直面します。
+          しかし、十分な資産を築き上げ、いざリタイアや労働の縮小（FIRE / サイドFIRE等）を迎えようとするとき、私たちは突如としてまったく異なる性質の難問に直面します。
         </p>
         <p>
           それが<strong>資産取り崩し（デキュムレーション: Decumulation）</strong>です。
@@ -215,11 +218,86 @@ Year 3: (12,080万円 - 400万円) * (1 - 0.30) = 11,680万円 * 0.70 = 8,176万
         </p>
       </section>
 
-      {/* 第2章 */}
-      <section id="chapter-2" className="scroll-mt-20">
-        <h2>第2章：取り崩しアーキテクチャの基本設計</h2>
+      {/* 第2章: FIREの工学的モデルと状態遷移 (NEW) */}
+      <section id="chapter-fire" className="scroll-mt-20">
+        <h2>第2章：FIRE（経済的自立）の工学的モデルと状態遷移</h2>
         <p>
-          では、どのように取り崩しシステムを設計すべきでしょうか。古典的な理論の限界を検証し、現代的なエンジニアリング・パターンへと昇華させていきます。
+          資産取り崩し（デキュムレーション）の最も代表的なトリガーが、<strong>FIRE（Financial Independence, Retire Early: 経済的自立と早期リタイア）</strong>です。
+        </p>
+        <p>
+          世間では「一生遊んで暮らすこと」と誤解されがちですが、エンジニアにとってのFIREは、まったく異なる意味を持ちます。
+        </p>
+
+        <h3 id="fire-definition">1. FIREの本質：時間主権の奪還と不労所得メーター</h3>
+        <p>
+          エンジニアにとってのFIREの本質とは、<strong>「金銭的報酬のために、やりたくないコードを書いたり理不尽な要求に従う必要がない状態（自主権・時間主権の奪還）」</strong>です。
+        </p>
+        <p>
+          かつてプログラミング言語の父たちが「F**k You Money」と呼んだように、生活を担保する不労所得が存在することで、エンジニアは次のような究極の自由を獲得します：
+        </p>
+        <ul>
+          <li>本当に社会的意義を感じるオープンソースプロジェクトにフルタイムでコミットする。</li>
+          <li>短期的な収益性を度外視して、自分が使いたいプロダクトを徹底的に作り込む。</li>
+          <li>非合理なマネジメントや不健全な労働環境に対して、いつでもノーを突きつけてエグジットする。</li>
+        </ul>
+        <p>
+          つまり、FIREとは「労働の全否定」ではなく、<strong>「生活費を稼ぐための強制労働（Toil）」から「知的探求や社会的貢献のための自由な活動（Creative Work）」へのリソースの再割り当て</strong>に他なりません。
+        </p>
+
+        <h3 id="fire-architectures">2. 5大FIREシステム・アーキテクチャと生活費カバーレベル</h3>
+        <p>
+          FIREは「0か1か」の二値フラグではありません。ポートフォリオの規模と生活スタイルのトレードオフに応じて、複数の設計パターンが存在します。
+        </p>
+
+        {/* FIRE諸類型 & カバーレベルのビジュアライザ */}
+        <FireTypesVisualizer />
+
+        <p>
+          Full FIRE（生活費の100%を資産運用で賄う）を目指すと、年間350万円の生活費に対して約1億円（SWR 3.5%基準）の元本が必要となります。
+        </p>
+        <p>
+          しかし、<strong>Side FIRE</strong>（半分を資産収入、半分を気楽な副業や受託で賄う）を選択すれば、必要資産額は一気に<strong>5,000万円</strong>へと半減します。
+          さらに、固定費を削るたびに「目標資産額がその約28.6倍の勢いで引き下がる」ため、日々の生活最適化は極めて高いレバレッジを持ちます。
+        </p>
+
+        <h3 id="fire-what-if">3. What-if シミュレーター（行動による加速インパクト）</h3>
+        <p>
+          「日々のちょっとした節約」や「固定費の見直し」は、単に数千円が浮くだけではありません。
+          投資元本の拡大と目標資産額の圧縮が同時に作用する<strong>二重の加速装置（Dual Booster）</strong>として働きます。
+        </p>
+        <p>
+          以下のシミュレーターで、日々の行動パラメータを操作し、FIRE到達が何年早まり、何時間の自由時間を手元に買い戻せるかを試算してみてください。
+        </p>
+
+        {/* FIRE加速 What-if シミュレーター */}
+        <FireWhatIfSim />
+
+        <h3 id="fire-lifeplan">4. 生涯資産＆デキュムレーション・ライフプラン</h3>
+        <p>
+          FIREを計画する際、最も重要なのは「FIRE到達時点」だけでなく、<strong>その後の生涯（老後・公的年金受給まで）を通貫したキャッシュフローの整合性</strong>です。
+        </p>
+        <p>
+          蓄積期（資産増加）からリタイア後の取り崩し期、そして公的年金の受給開始によるキャッシュフロー改善までを、年次複利計算でモデル化したシミュレーターです。
+        </p>
+
+        {/* 生涯資産ライフプランシミュレーター */}
+        <LifePlanSim />
+
+        <Callout type="tip" title="有限オートマトンとしての人生">
+          エンジニアの人生設計は、以下の3つのステートを持つ有限オートマトン（State Machine）として捉えられます：
+          <ol className="list-decimal pl-4 mt-2 space-y-1 text-xs">
+            <li><strong>State A: アキュムレーション期（蓄積・複利拡大）</strong> &mdash; インデックス積立の放置 $\mathcal&#123;O&#125;(1)$。</li>
+            <li><strong>State B: アーリーリタイア・デキュムレーション期（自前取り崩し）</strong> &mdash; ガードレールとキャッシュバッファによる防衛運転。</li>
+            <li><strong>State C: 公的年金併用期（終身キャッシュフロー確立）</strong> &mdash; インフレ連動年金によるテイルリスク無力化。</li>
+          </ol>
+        </Callout>
+      </section>
+
+      {/* 第3章: 取り崩しアーキテクチャの基本設計 */}
+      <section id="chapter-2" className="scroll-mt-20">
+        <h2>第3章：取り崩しアーキテクチャの基本設計</h2>
+        <p>
+          では、FIRE突入後の取り崩しシステムをどのように設計すべきでしょうか。古典的な理論の限界を検証し、現代的なエンジニアリング・パターンへと昇華させていきます。
         </p>
 
         <h3 id="swr-limits">1. トリニティ・スタディの限界と安全引き出し率（SWR）</h3>
@@ -388,9 +466,9 @@ function calculateAnnualWithdrawal(state: PortfolioState): number {
         </p>
       </section>
 
-      {/* 第3章 */}
+      {/* 第4章: 日本の口座別取り崩しパイプライン */}
       <section id="chapter-3" className="scroll-mt-20">
-        <h2>第3章：日本の制度を活かした「口座別」取り崩しパイプライン</h2>
+        <h2>第4章：日本の制度を活かした「口座別」取り崩しパイプライン</h2>
         <p>
           米国の文献（Trinity StudyやBogleheads）では「401(k)」「Roth IRA」「Traditional IRA」の取り崩し順序が論じられますが、日本居住者のエンジニアは<strong>日本の税制（特定口座・新NISA・iDeCo・退職金）に最適化されたパイプライン</strong>を実装しなければなりません。
         </p>
@@ -453,9 +531,9 @@ function calculateAnnualWithdrawal(state: PortfolioState): number {
         </p>
       </section>
 
-      {/* 第4章 */}
+      {/* 第5章: 公的年金 */}
       <section id="chapter-4" className="scroll-mt-20">
-        <h2>第4章：公的年金（厚生年金・基礎年金）という巨大な終身債券</h2>
+        <h2>第5章：公的年金（厚生年金・基礎年金）という巨大な終身債券</h2>
         <p>
           FIREや早期リタイアを志向するエンジニアの間で、最も過小評価されているシステムコンポーネントが<strong>「日本の公的年金制度（国民年金・厚生年金）」</strong>です。
         </p>
@@ -533,9 +611,9 @@ function calculateAnnualWithdrawal(state: PortfolioState): number {
         </p>
       </section>
 
-      {/* 第5章 */}
+      {/* 第6章: 人生の3ステージと思い出の配当 */}
       <section id="chapter-5" className="scroll-mt-20">
-        <h2>第5章：人生の3ステージと「思い出の配当（Memory Dividends）」</h2>
+        <h2>第6章：人生の3ステージと「思い出の配当（Memory Dividends）」</h2>
         <p>
           最後に、金融工学の数式を超えた<strong>「人間というハードウェアの制約」</strong>について論じます。
         </p>
@@ -623,32 +701,36 @@ function calculateAnnualWithdrawal(state: PortfolioState): number {
       {/* まとめ */}
       <section id="summary" className="scroll-mt-20">
         <h2>まとめ：人生のメインスレッドに戻るために</h2>
-        <p>本稿で提示した取り崩しアーキテクチャの要点をまとめます：</p>
+        <p>本稿で提示したFIREおよび取り崩しアーキテクチャの要点をまとめます：</p>
 
         <div className="not-prose my-6 p-5 rounded-2xl border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-[#13151f]">
           <ol className="space-y-3 text-xs sm:text-sm text-stone-700 dark:text-stone-300">
             <li className="flex items-start space-x-2">
-              <span className="font-mono font-bold text-blue-600 dark:text-blue-400 shrink-0">1.</span>
-              <span><strong>前提の更新</strong>: 30〜50年の超長期リタイアにおける安全引き出し率（SWR）は <strong>3.0% 〜 3.3%</strong> を基準とする。</span>
+              <span className="font-mono font-bold text-amber-600 dark:text-amber-400 shrink-0">1.</span>
+              <span><strong>時間主権の獲得としてのFIRE</strong>: 労働の全否定ではなく、強制労働からの脱却と自律的な創造的活動へのリソース再割り当て。</span>
             </li>
             <li className="flex items-start space-x-2">
               <span className="font-mono font-bold text-blue-600 dark:text-blue-400 shrink-0">2.</span>
-              <span><strong>動的制御の導入</strong>: 相場急落時には10%支出を絞り、好調時には10%拡大する<strong>ガードレール戦略</strong>で、生存率と効用のバランスを取る。</span>
+              <span><strong>前提の更新</strong>: 30〜50年の超長期FIREにおける安全引き出し率（SWR）は <strong>3.0% 〜 3.3%</strong> を基準とする。</span>
             </li>
             <li className="flex items-start space-x-2">
               <span className="font-mono font-bold text-blue-600 dark:text-blue-400 shrink-0">3.</span>
-              <span><strong>2層キャッシュ</strong>: <strong>2〜3年分の生活費を普通預金・個人向け国債（L1）として隔離</strong>し、暴落時の強制売却を物理的に防ぐ。</span>
+              <span><strong>動的制御の導入</strong>: 相場急落時には10%支出を絞り、好調時には10%拡大する<strong>ガードレール戦略</strong>で、生存率と効用のバランスを取る。</span>
             </li>
             <li className="flex items-start space-x-2">
               <span className="font-mono font-bold text-blue-600 dark:text-blue-400 shrink-0">4.</span>
-              <span><strong>税制最適化パイプライン</strong>: <strong>特定口座（課税） &rarr; 新NISA（非課税） &rarr; iDeCo/退職金</strong> の順で取り崩し、非課税複利期間を極限まで引き延ばす。</span>
+              <span><strong>2層キャッシュ</strong>: <strong>2〜3年分の生活費を普通預金・個人向け国債（L1）として隔離</strong>し、暴落時の強制売却を物理的に防ぐ。</span>
             </li>
             <li className="flex items-start space-x-2">
               <span className="font-mono font-bold text-blue-600 dark:text-blue-400 shrink-0">5.</span>
-              <span><strong>公的年金の活用</strong>: 年金を「インフレ連動の終身債券」と位置づけ、<strong>70〜75歳へ繰り下げて長生きリスクを完全に無効化</strong>する。</span>
+              <span><strong>税制最適化パイプライン</strong>: <strong>特定口座（課税） &rarr; 新NISA（非課税） &rarr; iDeCo/退職金</strong> の順で取り崩し、非課税複利期間を極限まで引き延ばす。</span>
             </li>
             <li className="flex items-start space-x-2">
               <span className="font-mono font-bold text-blue-600 dark:text-blue-400 shrink-0">6.</span>
+              <span><strong>公的年金の活用</strong>: 年金を「インフレ連動の終身債券」と位置づけ、<strong>70〜75歳へ繰り下げて長生きリスクを完全に無効化</strong>する。</span>
+            </li>
+            <li className="flex items-start space-x-2">
+              <span className="font-mono font-bold text-blue-600 dark:text-blue-400 shrink-0">7.</span>
               <span><strong>思い出の配当の最大化</strong>: 人間のハードウェア減衰を前提に、<strong>Go-Go期に体験への投資をフロントローディング</strong>する。</span>
             </li>
           </ol>
@@ -666,7 +748,7 @@ function calculateAnnualWithdrawal(state: PortfolioState): number {
           どれほど優れたアーキテクチャを組んでも、プログラムが終了（プロセスがKill）した後にメモリに残された資源は、すべて破棄されます。
         </p>
         <p>
-          一度堅牢な取り崩しパイプラインを設計・実装したら、日々の株価チャートを監視するのはやめましょう。
+          一度堅牢なFIREと取り崩しのパイプラインを設計・実装したら、日々の株価チャートを監視するのはやめましょう。
           システムをバックグラウンドで静かに稼働させ、ブラウザのタブを閉じ、あなた自身の人生のメインスレッドに全力で復帰してください。
         </p>
       </section>

@@ -25,8 +25,19 @@ export const TOC_ITEMS: TocItem[] = [
     ],
   },
   {
+    id: 'chapter-fire',
+    title: '第2章：FIRE（経済的自立）の工学的モデルと状態遷移',
+    level: 2,
+    subItems: [
+      { id: 'fire-definition', title: '1. FIREの本質：時間主権の奪還と不労所得メーター', level: 3 },
+      { id: 'fire-architectures', title: '2. 5大FIREシステム・アーキテクチャと生活費カバーレベル', level: 3 },
+      { id: 'fire-what-if', title: '3. What-if シミュレーター（行動による加速インパクト）', level: 3 },
+      { id: 'fire-lifeplan', title: '4. 生涯資産＆デキュムレーション・ライフプラン', level: 3 },
+    ],
+  },
+  {
     id: 'chapter-2',
-    title: '第2章：取り崩しアーキテクチャの基本設計',
+    title: '第3章：取り崩しアーキテクチャの基本設計',
     level: 2,
     subItems: [
       { id: 'swr-limits', title: '1. トリニティ・スタディの限界と安全引き出し率', level: 3 },
@@ -36,7 +47,7 @@ export const TOC_ITEMS: TocItem[] = [
   },
   {
     id: 'chapter-3',
-    title: '第3章：日本の制度を活かした「口座別」取り崩しパイプライン',
+    title: '第4章：日本の制度を活かした「口座別」取り崩しパイプライン',
     level: 2,
     subItems: [
       { id: 'phase-taxable', title: 'Phase 1: 特定口座（課税口座）の優先売却', level: 3 },
@@ -46,7 +57,7 @@ export const TOC_ITEMS: TocItem[] = [
   },
   {
     id: 'chapter-4',
-    title: '第4章：公的年金という巨大な終身債券',
+    title: '第5章：公的年金という巨大な終身債券',
     level: 2,
     subItems: [
       { id: 'pension-call-option', title: '1. インフレ連動の終身コールオプション', level: 3 },
@@ -55,7 +66,7 @@ export const TOC_ITEMS: TocItem[] = [
   },
   {
     id: 'chapter-5',
-    title: '第5章：人生の3ステージと「思い出の配当」',
+    title: '第6章：人生の3ステージと「思い出の配当」',
     level: 2,
     subItems: [
       { id: 'hardware-degradation', title: '1. お金を使う能力の減衰カーブ', level: 3 },
@@ -75,7 +86,6 @@ export const TOC_ITEMS: TocItem[] = [
   },
 ];
 
-// フラットな見出しID一覧（IntersectionObserver追跡用）
 export const ALL_SECTION_IDS = [
   'disclaimer',
   'intro',
@@ -84,6 +94,11 @@ export const ALL_SECTION_IDS = [
   'chapter-1',
   'sorr',
   'psychological-bug',
+  'chapter-fire',
+  'fire-definition',
+  'fire-architectures',
+  'fire-what-if',
+  'fire-lifeplan',
   'chapter-2',
   'swr-limits',
   'variable-spending',
