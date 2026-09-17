@@ -7,6 +7,11 @@ export const TOC_ITEMS: TocItem[] = [
     level: 2,
   },
   {
+    id: 'conclusion',
+    title: '結論（TL;DR）',
+    level: 2,
+  },
+  {
     id: 'intro',
     title: 'はじめに',
     level: 2,
@@ -88,6 +93,7 @@ export const TOC_ITEMS: TocItem[] = [
 
 export const ALL_SECTION_IDS = [
   'disclaimer',
+  'conclusion',
   'intro',
   'intro-solved',
   'intro-dynamic-problem',

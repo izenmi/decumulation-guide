@@ -76,6 +76,60 @@ export const ArticleContent: React.FC = () => {
         </ul>
       </section>
 
+      {/* 結論（TL;DR） */}
+      <section id="conclusion" className="scroll-mt-20">
+        <h2>結論</h2>
+        <p className="text-lg font-medium text-stone-900 dark:text-stone-100">
+          忙しい人のために、結論を先に書く。
+        </p>
+        <p>
+          ソフトウェアエンジニアが資産取り崩し（デキュムレーション期）およびFIREにおいて従うべきルールは、以下の通りである：
+        </p>
+
+        <div className="not-prose my-6 p-6 rounded-2xl border-2 border-blue-500/40 dark:border-blue-500/30 bg-blue-50/50 dark:bg-blue-950/20 shadow-xs">
+          <div className="text-xs font-mono font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400 mb-3 flex items-center space-x-1.5">
+            <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400" />
+            <span>Decumulation Pipeline Rules for Software Engineers</span>
+          </div>
+          <ol className="space-y-3.5 text-sm sm:text-base text-stone-800 dark:text-stone-200">
+            <li className="flex items-start space-x-3">
+              <span className="font-mono font-bold text-blue-600 dark:text-blue-400 shrink-0 text-base">1.</span>
+              <span><strong>安全引き出し率（SWR）を 3.0〜3.3% に設定する</strong>（40〜50年の超長期退職における破綻確率を極小化する）。</span>
+            </li>
+            <li className="flex items-start space-x-3">
+              <span className="font-mono font-bold text-blue-600 dark:text-blue-400 shrink-0 text-base">2.</span>
+              <span><strong>生活費の 2〜3 年分を普通預金・個人向け国債（L1キャッシュ）として隔離する</strong>（暴落時の強制売却を物理的に遮断する）。</span>
+            </li>
+            <li className="flex items-start space-x-3">
+              <span className="font-mono font-bold text-blue-600 dark:text-blue-400 shrink-0 text-base">3.</span>
+              <span><strong>動的ガードレール（サーキットブレーカー）を導入する</strong>（相場急落時は支出を10%絞り、好調時は10%拡大する）。</span>
+            </li>
+            <li className="flex items-start space-x-3">
+              <span className="font-mono font-bold text-blue-600 dark:text-blue-400 shrink-0 text-base">4.</span>
+              <span><strong>特定口座（課税） &rarr; 新NISA（非課税） &rarr; iDeCo/退職金 の順に取り崩す</strong>（非課税複利期間を極限まで引き延ばす）。</span>
+            </li>
+            <li className="flex items-start space-x-3">
+              <span className="font-mono font-bold text-blue-600 dark:text-blue-400 shrink-0 text-base">5.</span>
+              <span><strong>公的年金は 70〜75 歳まで繰り下げ受給する</strong>（年利+8.4%のインフレ連動終身コールオプションとして長生きリスクを無効化する）。</span>
+            </li>
+            <li className="flex items-start space-x-3">
+              <span className="font-mono font-bold text-blue-600 dark:text-blue-400 shrink-0 text-base">6.</span>
+              <span><strong>Go-Go期（活動期）に体験への投資をフロントローディングする</strong>（人間のハードウェア減衰を踏まえ、思い出の配当を最大化する）。</span>
+            </li>
+          </ol>
+        </div>
+
+        <p className="font-semibold text-stone-900 dark:text-stone-100">
+          ルールはこれだけである。これ以上でもこれ以下でもない。
+        </p>
+        <p>
+          もしあなたがこの結論に納得し、すでにシステムを構築できるのであれば、<strong>これ以上本稿を読む必要はない。直ちにブラウザのタブを閉じ、あなた自身の人生のメインスレッド（本業の開発や大切な人との時間）に戻ってほしい。</strong>
+        </p>
+        <p className="text-stone-600 dark:text-stone-400">
+          なぜこのルールが導かれるのか、その工学的・数学的な根拠、シーケンス・オブ・リターン・リスクの証明、および具体的なシミュレーションを理解したい人だけ、続きを読んでほしい。
+        </p>
+      </section>
+
       {/* はじめに */}
       <section id="intro" className="scroll-mt-20">
         <h2>はじめに</h2>
