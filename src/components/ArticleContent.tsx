@@ -272,8 +272,8 @@ Year 3: (12,080万円 - 400万円) * (1 - 0.30) = 11,680万円 * 0.70 = 8,176万
         </p>
       </section>
 
-      {/* 第2章: FIREの工学的モデルと状態遷移 (NEW) */}
-      <section id="chapter-fire" className="scroll-mt-20">
+      {/* 第2章: FIREの工学的モデルと状態遷移 */}
+      <section id="chapter-2" className="scroll-mt-20">
         <h2>第2章：FIRE（経済的自立）の工学的モデルと状態遷移</h2>
         <p>
           資産取り崩し（デキュムレーション）の最も代表的なトリガーが、<strong>FIRE（Financial Independence, Retire Early: 経済的自立と早期リタイア）</strong>です。
@@ -348,7 +348,7 @@ Year 3: (12,080万円 - 400万円) * (1 - 0.30) = 11,680万円 * 0.70 = 8,176万
       </section>
 
       {/* 第3章: 取り崩しアーキテクチャの基本設計 */}
-      <section id="chapter-2" className="scroll-mt-20">
+      <section id="chapter-3" className="scroll-mt-20">
         <h2>第3章：取り崩しアーキテクチャの基本設計</h2>
         <p>
           では、FIRE突入後の取り崩しシステムをどのように設計すべきでしょうか。古典的な理論の限界を検証し、現代的なエンジニアリング・パターンへと昇華させていきます。
@@ -521,7 +521,7 @@ function calculateAnnualWithdrawal(state: PortfolioState): number {
       </section>
 
       {/* 第4章: 日本の口座別取り崩しパイプライン */}
-      <section id="chapter-3" className="scroll-mt-20">
+      <section id="chapter-4" className="scroll-mt-20">
         <h2>第4章：日本の制度を活かした「口座別」取り崩しパイプライン</h2>
         <p>
           米国の文献（Trinity StudyやBogleheads）では「401(k)」「Roth IRA」「Traditional IRA」の取り崩し順序が論じられますが、日本居住者のエンジニアは<strong>日本の税制（特定口座・新NISA・iDeCo・退職金）に最適化されたパイプライン</strong>を実装しなければなりません。
@@ -586,7 +586,7 @@ function calculateAnnualWithdrawal(state: PortfolioState): number {
       </section>
 
       {/* 第5章: 公的年金 */}
-      <section id="chapter-4" className="scroll-mt-20">
+      <section id="chapter-5" className="scroll-mt-20">
         <h2>第5章：公的年金（厚生年金・基礎年金）という巨大な終身債券</h2>
         <p>
           FIREや早期リタイアを志向するエンジニアの間で、最も過小評価されているシステムコンポーネントが<strong>「日本の公的年金制度（国民年金・厚生年金）」</strong>です。
@@ -666,7 +666,7 @@ function calculateAnnualWithdrawal(state: PortfolioState): number {
       </section>
 
       {/* 第6章: 人生の3ステージと思い出の配当 */}
-      <section id="chapter-5" className="scroll-mt-20">
+      <section id="chapter-6" className="scroll-mt-20">
         <h2>第6章：人生の3ステージと「思い出の配当（Memory Dividends）」</h2>
         <p>
           最後に、金融工学の数式を超えた<strong>「人間というハードウェアの制約」</strong>について論じます。

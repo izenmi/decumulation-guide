@@ -44,14 +44,24 @@ export const InteractiveSim: React.FC = () => {
       const rEarly = earlyCrashReturns[y - 1];
       const rLate = lateCrashReturns[y - 1];
 
-      // ガードレール適用判定
+      // ガードレール適用判定（本文の10%ルールに準拠）
       let actualSpendEarly = annualSpend;
       if (useGuardrails && earlyAssets > 0) {
         const currentRate = annualSpend / earlyAssets;
         if (currentRate > initialRate * 1.2) {
-          actualSpendEarly = annualSpend * 0.85; // 15%カット
+          actualSpendEarly = annualSpend * 0.90; // 10%カット
         } else if (currentRate < initialRate * 0.8) {
-          actualSpendEarly = annualSpend * 1.15; // 15%ブースト
+          actualSpendEarly = annualSpend * 1.10; // 10%ブースト
+        }
+      }
+
+      let actualSpendLate = annualSpend;
+      if (useGuardrails && lateAssets > 0) {
+        const currentRate = annualSpend / lateAssets;
+        if (currentRate > initialRate * 1.2) {
+          actualSpendLate = annualSpend * 0.90; // 10%カット
+        } else if (currentRate < initialRate * 0.8) {
+          actualSpendLate = annualSpend * 1.10; // 10%ブースト
         }
       }
 
@@ -61,7 +71,7 @@ export const InteractiveSim: React.FC = () => {
       }
 
       if (lateAssets > 0) {
-        lateAssets = (lateAssets - annualSpend) * (1 + rLate);
+        lateAssets = (lateAssets - actualSpendLate) * (1 + rLate);
         if (lateAssets < 0) lateAssets = 0;
       }
 
@@ -200,7 +210,7 @@ export const InteractiveSim: React.FC = () => {
                   動的ガードレール（サーキットブレーカー）
                 </span>
                 <span className="text-[11px] text-stone-500 dark:text-stone-400 block">
-                  暴落時に支出を自動で15%抑制
+                  暴落時に支出を自動で10%抑制
                 </span>
               </div>
             </label>
@@ -331,7 +341,7 @@ export const InteractiveSim: React.FC = () => {
           <span className="font-bold">シミュレーションから得られる教訓: </span>
           両シナリオの「30年間の年平均リターン」は全く同一です。しかし、序盤に暴落が来ると元本毀損により
           {finalEarly === 0 ? ' 途中で資産が枯渇します。' : ' 資産残高に天文学的な格差が生じます。'}
-          「動的ガードレール」にチェックを入れると、暴落時に支出を15%抑制することで元本が保護され、生存率が劇的に回復することが確認できます。
+          「動的ガードレール」にチェックを入れると、暴落時に支出を10%抑制することで元本が保護され、生存率が劇的に回復することが確認できます。
         </div>
       </div>
     </div>

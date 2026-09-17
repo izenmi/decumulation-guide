@@ -30,7 +30,7 @@ export const TOC_ITEMS: TocItem[] = [
     ],
   },
   {
-    id: 'chapter-fire',
+    id: 'chapter-2',
     title: '第2章：FIRE（経済的自立）の工学的モデルと状態遷移',
     level: 2,
     subItems: [
@@ -41,7 +41,7 @@ export const TOC_ITEMS: TocItem[] = [
     ],
   },
   {
-    id: 'chapter-2',
+    id: 'chapter-3',
     title: '第3章：取り崩しアーキテクチャの基本設計',
     level: 2,
     subItems: [
@@ -51,7 +51,7 @@ export const TOC_ITEMS: TocItem[] = [
     ],
   },
   {
-    id: 'chapter-3',
+    id: 'chapter-4',
     title: '第4章：日本の制度を活かした「口座別」取り崩しパイプライン',
     level: 2,
     subItems: [
@@ -61,7 +61,7 @@ export const TOC_ITEMS: TocItem[] = [
     ],
   },
   {
-    id: 'chapter-4',
+    id: 'chapter-5',
     title: '第5章：公的年金という巨大な終身債券',
     level: 2,
     subItems: [
@@ -70,7 +70,7 @@ export const TOC_ITEMS: TocItem[] = [
     ],
   },
   {
-    id: 'chapter-5',
+    id: 'chapter-6',
     title: '第6章：人生の3ステージと「思い出の配当」',
     level: 2,
     subItems: [
@@ -100,23 +100,23 @@ export const ALL_SECTION_IDS = [
   'chapter-1',
   'sorr',
   'psychological-bug',
-  'chapter-fire',
+  'chapter-2',
   'fire-definition',
   'fire-architectures',
   'fire-what-if',
   'fire-lifeplan',
-  'chapter-2',
+  'chapter-3',
   'swr-limits',
   'variable-spending',
   'cash-buffer',
-  'chapter-3',
+  'chapter-4',
   'phase-taxable',
   'phase-nisa',
   'phase-ideco',
-  'chapter-4',
+  'chapter-5',
   'pension-call-option',
   'pension-deferral',
-  'chapter-5',
+  'chapter-6',
   'hardware-degradation',
   'three-stages',
   'memory-dividends',

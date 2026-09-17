@@ -483,8 +483,9 @@ export const LifePlanSim: React.FC = () => {
             onChange={(e) => {
               const age = Number(e.target.value);
               setPensionAge(age);
-              // 65歳基準13万円、月0.7%増減
-              const bonus = (age - 65) * 0.007 * 12;
+              // 65歳基準13万円。繰下げ(65歳以上)は月+0.7%、繰上げ(65歳未満)は月-0.4%
+              const rate = age >= 65 ? 0.007 : 0.004;
+              const bonus = (age - 65) * rate * 12;
               setPensionMonthly(Math.round(13 * (1 + bonus)));
             }}
             className="w-full accent-purple-600 cursor-pointer"
