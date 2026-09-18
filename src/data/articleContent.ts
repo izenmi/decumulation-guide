@@ -67,6 +67,7 @@ export const TOC_ITEMS: TocItem[] = [
     subItems: [
       { id: 'pension-call-option', title: '1. インフレ連動の終身コールオプション', level: 3 },
       { id: 'pension-deferral', title: '2. 繰り下げ受給の最適化とテイルリスク・ヘッジ', level: 3 },
+      { id: 'pension-tax-tradeoff', title: '3. 税金・社会保険料の壁と「投信温存 vs 繰下げ」の分岐設計', level: 3 },
     ],
   },
   {
@@ -116,6 +117,7 @@ export const ALL_SECTION_IDS = [
   'chapter-5',
   'pension-call-option',
   'pension-deferral',
+  'pension-tax-tradeoff',
   'chapter-6',
   'hardware-degradation',
   'three-stages',

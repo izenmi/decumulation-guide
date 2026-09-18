@@ -663,6 +663,140 @@ function calculateAnnualWithdrawal(state: PortfolioState): number {
         <p>
           エンジニアのポートフォリオ設計において、<strong>「年金は70〜75歳まで繰り下げ、60〜75歳の間は自前のポートフォリオを取り崩して生活を支える」</strong>というアーキテクチャが、最も破綻確率を低減させる最適解となります。
         </p>
+
+        <h3 id="pension-tax-tradeoff">3. 税金・社会保険料の壁と「投信温存 vs 繰下げ」の分岐設計</h3>
+        <p>
+          ここまで年金繰下げの強力な保険機能を解説してきましたが、実践的なエンジニアが直面する<strong>「税金・社会保険料の累進コスト」</strong>と<strong>「投資信託を売らずに複利運用し続けた方が得ではないか？」</strong>という重要な対立仮説（Counter-Hypothesis）を工学的に検証します。
+        </p>
+
+        <h4>税金・社会保険料の落とし穴：額面+84%は手取りで+50〜60%に減衰する</h4>
+        <p>
+          日本の税・社会保障システムにおいて、公的年金は「雑所得」として総合課税されます。
+          年金を75歳まで繰り下げて額面を1.84倍に引き上げた場合、以下の3つのコストが連鎖的に跳ね上がります：
+        </p>
+        <ul>
+          <li>
+            <strong>公的年金等控除の枠オーバー</strong>: 65歳以上の控除枠（年110万円）を大きく超え、所得税・住民税の課税対象所得が急増する。
+          </li>
+          <li>
+            <strong>国民健康保険料・介護保険料の激増</strong>: 自治体の国保料・介護保険料は前年の総合所得に連動して算定されるため、年金額の増加に伴い上限近くまで引き上がる。
+          </li>
+          <li>
+            <strong>75歳以降の後期高齢者医療制度の窓口負担増</strong>: 窓口負担は通常「1割」ですが、単身で年金等収入が200万円以上なら「2割」、現役並み（約383万円以上）なら「3割」にアップし、高額療養費の上限額も引き上がる。
+          </li>
+        </ul>
+        <p>
+          その結果、<strong>「額面は+84%に増えても、実際の手取り増額率は+50〜60%程度にとどまる」</strong>という手取りの減衰が発生します。
+        </p>
+
+        <h4>対比：投資信託（株式インデックス）の売却益の隠れた強み</h4>
+        <p>
+          これに対し、投資信託（株式）を取り崩す場合の税制は極めて有利に設計されています：
+        </p>
+        <ul>
+          <li><strong>新NISA</strong>: 非課税（税率0%・所得ゼロ扱い）。</li>
+          <li>
+            <strong>特定口座（源泉徴収あり）</strong>: 「申告不要制度」を選択すれば、どれだけ巨額の利益を確定させても、一律20.315%の分離課税で完結します。<strong>自治体の総所得金額等に算入されないため、国民健康保険料・介護保険料・医療費窓口負担に一切影響を与えません。</strong>
+          </li>
+        </ul>
+        <p>
+          税・社保の最適化という観点だけを見れば、「年金をあえて増やさず（65歳受給または繰上げ）、株式（NISA・特定口座）主体で引き出す」方が、手取り率や社会保障コストを低く抑えられるケースが確実に存在します。
+        </p>
+
+        <h4>「投信温存型（早期受給）」vs「年金ブースト型（繰下げ）」のトレードオフ</h4>
+        <p>
+          「年金を早くもらって投資信託を売らずに複利運用し続ける」戦略と、「投信を先に取り崩して年金を繰り下げる」戦略は、<strong>何を目的関数とするか</strong>によって評価が分かれます。
+        </p>
+
+        <div className="not-prose my-6 overflow-x-auto">
+          <table className="w-full text-left text-xs sm:text-sm border-collapse border border-stone-200 dark:border-stone-800">
+            <thead className="bg-stone-100 dark:bg-stone-900/80 text-stone-900 dark:text-stone-100 font-bold">
+              <tr>
+                <th className="p-3 border border-stone-200 dark:border-stone-800">比較項目</th>
+                <th className="p-3 border border-stone-200 dark:border-stone-800">① 投信温存型（60〜65歳早期受給）</th>
+                <th className="p-3 border border-stone-200 dark:border-stone-800">② 年金ブースト型（70〜75歳繰下げ）</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-stone-200 dark:divide-stone-800 text-stone-700 dark:text-stone-300">
+              <tr>
+                <td className="p-3 font-semibold border border-stone-200 dark:border-stone-800">アーキテクチャ方針</td>
+                <td className="p-3 border border-stone-200 dark:border-stone-800">年金を早期に充当し、投信の複利（期待年5〜7%）を最大限長く回す</td>
+                <td className="p-3 border border-stone-200 dark:border-stone-800">投信を先に取り崩し、公的年金を+42%〜+84%までブースト固定する</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-semibold border border-stone-200 dark:border-stone-800">市場好調時の資産最大化</td>
+                <td className="p-3 border border-stone-200 dark:border-stone-800 font-bold text-emerald-600 dark:text-emerald-400">極めて高い（期待値の最大化）</td>
+                <td className="p-3 border border-stone-200 dark:border-stone-800">中程度（株式を早期売却するため上昇の取りこぼしあり）</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-semibold border border-stone-200 dark:border-stone-800">税金・社会保険料</td>
+                <td className="p-3 border border-stone-200 dark:border-stone-800 font-bold text-emerald-600 dark:text-emerald-400">有利（年金所得が低く、国保・医療費窓口負担を抑えやすい）</td>
+                <td className="p-3 border border-stone-200 dark:border-stone-800">不利（年金増額により税・社保・窓口負担が増加）</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-semibold border border-stone-200 dark:border-stone-800">SORR（序盤大暴落）耐性</td>
+                <td className="p-3 border border-stone-200 dark:border-stone-800 font-bold text-rose-600 dark:text-rose-400">脆弱（相場低迷時に投信が目減りし、手元の年金も少額固定）</td>
+                <td className="p-3 border border-stone-200 dark:border-stone-800 font-bold text-blue-600 dark:text-blue-400">極めて高い（後半にインフレ連動の終身防壁が自動展開）</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-semibold border border-stone-200 dark:border-stone-800">100歳長生きリスク</td>
+                <td className="p-3 border border-stone-200 dark:border-stone-800 text-rose-600 dark:text-rose-400">リスクあり（長生きほど投信枯渇リスクが上昇）</td>
+                <td className="p-3 border border-stone-200 dark:border-stone-800 font-bold text-blue-600 dark:text-blue-400">完全耐性（死ぬまで高水準キャッシュフローが保証）</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-semibold border border-stone-200 dark:border-stone-800">認知能力減衰への耐性</td>
+                <td className="p-3 border border-stone-200 dark:border-stone-800">低い（80〜90代でも証券口座の売却・リバランス管理が必要）</td>
+                <td className="p-3 border border-stone-200 dark:border-stone-800 font-bold text-blue-600 dark:text-blue-400">最高（口座に自動入金されるため認知症でも完全自律運転）</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4>エンジニアはどう判断すべきか：資産規模別の分岐モデル</h4>
+        <p>
+          どちらが正解かは、「あなたの総資産規模」と「システムの目的（期待値の最大化か、最悪障害の回避か）」によって明確に分岐します：
+        </p>
+
+        <CodeBlock
+          filename="pension_strategy_decision.ts"
+          language="typescript"
+          code={`interface RetirementPortfolio {
+  netWorth: number;          // 純金融資産（円）
+  annualExpenses: number;    // 年間生活費（円）
+  riskTolerance: "max_wealth" | "zero_ruin";
+}
+
+function resolvePensionStrategy(profile: RetirementPortfolio): string {
+  const { netWorth, annualExpenses, riskTolerance } = profile;
+  const coverageRatio = netWorth / annualExpenses; // 生活費何年分の資産か
+
+  if (coverageRatio >= 40 || netWorth >= 150_000_000) {
+    // 【資産潤沢型（1.5億〜2億円以上、または支出40倍超）】
+    // 暴落や100歳到達でもポートフォリオが破綻する確率はほぼゼロ。
+    // 過剰に高い年金保険料（税・社保負担）を払う必要がないため、
+    // 65歳受給（または繰上げ）で税・社保をミニマムにし、投信の複利を回し続けるのが合理的。
+    return "投信温存型（65歳受給または繰上げ）: 税・社保を最適化し、株式の複利成長を最大化";
+  }
+
+  if (coverageRatio <= 30 || riskTolerance === "zero_ruin") {
+    // 【FIRE基準防衛型（資産5,000万〜1億円前後、または支出25〜33倍）】
+    // 株式長期低迷 ＋ 100歳長生きという「二重障害（Double Fault）」による破綻リスクが存在する。
+    // 年金繰下げを「インフレ連動の終身保険」として買い、後半の生活防衛フロアを確定させるべき。
+    return "年金ブースト型（70歳前後への繰下げ）: テイルリスクを完全無力化し、生存率100%を固定";
+  }
+
+  // 【実務的スイートスポット: 70歳受給（+42%）】
+  // 75歳まで繰り下げると税・社保・医療費3割負担の急増ゾーンに入るため、
+  // +42%を確保しつつ税負担の急伸を回避する「70歳着地」が中庸の最適解となる。
+  return "バランス型（70歳受給・+42%）: 税・社保の急伸を避けつつ終身フロアを確立";
+}`}
+        />
+
+        <p>
+          <strong>まとめ</strong>:
+          資産がすでに2億円近くある「Fat FIRE」の領域であれば、「年金を早くもらって税金と社会保険料を抑え、投信の複利を温存する」戦略が数学的に極めて優位です。
+          一方、資産が5,000万〜1億円前後の「標準的なFIRE」であれば、市場のテールリスクと100歳までの長寿という不確実性から身を守るため、<strong>「70歳前後まで繰り下げて生涯の生存フロアを確定させる」</strong>ことが、最も強固なフェイルセーフとして機能します。
+        </p>
       </section>
 
       {/* 第6章: 人生の3ステージと思い出の配当 */}
